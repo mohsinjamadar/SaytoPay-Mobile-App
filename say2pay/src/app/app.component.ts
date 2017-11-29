@@ -6,13 +6,12 @@ import { Nav } from 'ionic-angular';
 
 import { LoginPage } from '../pages/login/login.component';
 import { AccountsPage } from '../pages/accounts/accounts.component';
-import { BillsPage } from '../pages/bills/bills.component';
 import { PrivacyPage } from '../pages/privacy/privacy.component';
 
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class Say2Pay {
   rootPage:any = LoginPage;
   @ViewChild(Nav) nav:Nav;
 
@@ -25,13 +24,13 @@ export class MyApp {
     });
   }
 
-  public goToAccounts(){
+  public goToDashboard(){
     this.nav.setRoot(AccountsPage);
-  }
-  public goToBills(){
-    this.nav.setRoot(BillsPage);
   }
   public goToPrivacyPolicy(){
     this.nav.setRoot(PrivacyPage);
+  }
+  public goToLogin(){
+    this.nav.setRoot(LoginPage);
   }
 }

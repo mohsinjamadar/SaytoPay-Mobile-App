@@ -10,8 +10,8 @@ import { AccountsPage } from '../accounts/accounts.component'
 })
 export class LoginPage {
 
-  username:string = 'Shilpa';
-  password:string = 'shilpa@123';
+  username:string = '';
+  password:string = '';
   constructor(public nav: NavController, private loginService: LoginService) {
   }
 
@@ -19,8 +19,6 @@ export class LoginPage {
     this.loginService.doLogin(this.username, this.password).subscribe(
          data => {
 
-           console.log(JSON.stringify(data._body));
-           console.log(JSON.parse(data._body));
            let res = JSON.parse(data._body)
            if(res.loggedIn == true){
            //Navigate to home page

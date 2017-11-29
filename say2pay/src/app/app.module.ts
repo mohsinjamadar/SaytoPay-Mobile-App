@@ -6,40 +6,39 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { HttpModule } from '@angular/http';
 import 'rxjs/Rx';
 
-import { MyApp } from './app.component';
+import { Say2Pay } from './app.component';
+import { SharedService } from '../pages/shared/shared.service';
 import { LoginService } from '../pages/login/login.service';
 import { AccountsService } from '../pages/accounts/accounts.service';
-import { BillsService } from '../pages/bills/bills.service';
+import { BillsService } from '../pages/accounts/bills.service';
 import { PrivacyService } from '../pages/privacy/privacy.service';
 import { LoginPage } from '../pages/login/login.component';
 import { AccountsPage } from '../pages/accounts/accounts.component';
-import { BillsPage } from '../pages/bills/bills.component';
 import { PrivacyPage } from '../pages/privacy/privacy.component';
 
 @NgModule({
   declarations: [
-    MyApp,
+    Say2Pay,
     LoginPage,
     AccountsPage,
-    BillsPage,
     PrivacyPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(Say2Pay)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
+    Say2Pay,
     LoginPage,
     AccountsPage,
-    BillsPage,
     PrivacyPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    SharedService,
     LoginService,
     AccountsService,
     BillsService,

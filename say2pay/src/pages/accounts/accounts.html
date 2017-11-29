@@ -4,22 +4,43 @@
       <ion-icon name='menu'></ion-icon>
     </button>
     <ion-title>
-      Accounts
+      Dashboard
     </ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="getAccounts()">
-         <ion-icon name="refresh" ></ion-icon>
+      <button ion-button icon-only (click)="updateData()">
+         <ion-icon name="refresh"></ion-icon>
        </button>
    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-        <ion-list class="account-list">
-          <ion-item *ngFor="let account of accountsList">
-              <h2 class="account-number">{{ account.acctNumber }}</h2>
-              <p class="account-name">{{ account.acctName }}</p>
-              <h3 class="account-balance">{{ account.accountBalance }}</h3>
-          </ion-item>
-      </ion-list>
+  <ion-segment [(ngModel)]='viewMode'>
+  <ion-segment-button value="accounts">
+    Accounts
+  </ion-segment-button>
+  <ion-segment-button value="bills">
+    Bills
+  </ion-segment-button>
+</ion-segment>
+
+<div [ngSwitch]="viewMode">
+  <ion-list *ngSwitchCase="'accounts'" class="account-list">
+      <ion-item *ngFor="let account of accountsList">
+          <h2 class="account-number">{{ account.acctNumber }}</h2>
+          <p class="account-name">{{ account.acctName }}</p>
+          <h3 class="account-balance">{{ account.accountCurrency }} {{ account.accountBalance }}</h3>
+      </ion-item>
+      <h4 class="no-data-message" *ngIf='accountsList == undefined || accountsList.length == 0'>No Accounts Linked.</h4>
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'bills'" class="bills-list">
+      <ion-item *ngFor="let bill of billsList">
+          <h2 class="bill-number">{{ bill.name }}</h2>
+          <p class="bill-name">{{ bill.dueDate }}</p>
+          <h3 class="bill-balance">{{ bill.amount }}</h3>
+      </ion-item>
+      <h4 class="no-data-message" *ngIf='billsList == undefined || billsList.length == 0'>Hurray! No Bills Due.</h4>
+  </ion-list>
+</div>
 </ion-content>

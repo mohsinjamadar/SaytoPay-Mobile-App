@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 
 import { PrivacyService } from './privacy.service'
 import { ChangeDetectorRef } from '@angular/core';
+import { AccountsPage } from '../accounts/accounts.component';
 
 @Component({
   selector: 'page-privacy',
@@ -10,6 +11,7 @@ import { ChangeDetectorRef } from '@angular/core';
 })
 export class PrivacyPage {
 
+  isActiveToggleTextPassword: Boolean = true;
   privacyData = {
                     "askPaymentPIN": false,
                     "showAccountBalance": false,
@@ -27,9 +29,6 @@ export class PrivacyPage {
          data => {
 
            this.privacyData = JSON.parse(data._body);
-           console.log(this.privacyData.showAccountBalance);
-           console.log(this.privacyData.askPaymentPIN);
-           console.log(this.privacyData.shouldAllowTransfers);
 
            this.ref.markForCheck();
          }
@@ -49,6 +48,17 @@ export class PrivacyPage {
            this.ref.markForCheck();
          }
     );
+  }
+
+  public toggleTextPassword(): void{
+      this.isActiveToggleTextPassword = (this.isActiveToggleTextPassword==true)?false:true;
+  }
+  public getType() {
+      return this.isActiveToggleTextPassword ? 'password' : 'text';
+  }
+
+  public backButtonAction() {
+    this.nav.setRoot(AccountsPage);
   }
 
 }
