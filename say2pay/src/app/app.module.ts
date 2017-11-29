@@ -9,14 +9,20 @@ import 'rxjs/Rx';
 import { MyApp } from './app.component';
 import { LoginService } from '../pages/login/login.service';
 import { AccountsService } from '../pages/accounts/accounts.service';
+import { BillsService } from '../pages/bills/bills.service';
+import { PrivacyService } from '../pages/privacy/privacy.service';
 import { LoginPage } from '../pages/login/login.component';
 import { AccountsPage } from '../pages/accounts/accounts.component';
+import { BillsPage } from '../pages/bills/bills.component';
+import { PrivacyPage } from '../pages/privacy/privacy.component';
 
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
-    AccountsPage
+    AccountsPage,
+    BillsPage,
+    PrivacyPage
   ],
   imports: [
     BrowserModule,
@@ -27,13 +33,17 @@ import { AccountsPage } from '../pages/accounts/accounts.component';
   entryComponents: [
     MyApp,
     LoginPage,
-    AccountsPage
+    AccountsPage,
+    BillsPage,
+    PrivacyPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     LoginService,
     AccountsService,
+    BillsService,
+    PrivacyService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

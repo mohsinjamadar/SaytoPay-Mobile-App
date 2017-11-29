@@ -14,6 +14,10 @@ export class AccountsPage {
   constructor(private ref: ChangeDetectorRef, public nav: NavController, private accountsService: AccountsService) {
   }
   ngOnInit() {
+    this.getAccounts()
+  }
+
+  public getAccounts() {
     this.accountsService.getAccounts().subscribe(
          data => {
 

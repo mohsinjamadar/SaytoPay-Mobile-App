@@ -1,18 +1,25 @@
 <ion-header>
   <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
     <ion-title>
       Accounts
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="getAccounts()">
+         <ion-icon name="refresh" ></ion-icon>
+       </button>
+   </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-list class="account-list">
-    <ion-item *ngFor="let account of accountsList">
-      <h2 class="account-number">{{ account.acctNumber }}</h2>
-      <p class="account-name">{{ account.acctName }}</p>
-      <h3 class="account-balance">90000{{ account.accountBalance }}</h3>
-    </ion-item>
-</ion-list>
-
+        <ion-list class="account-list">
+          <ion-item *ngFor="let account of accountsList">
+              <h2 class="account-number">{{ account.acctNumber }}</h2>
+              <p class="account-name">{{ account.acctName }}</p>
+              <h3 class="account-balance">{{ account.accountBalance }}</h3>
+          </ion-item>
+      </ion-list>
 </ion-content>

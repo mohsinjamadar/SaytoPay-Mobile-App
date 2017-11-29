@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Privacy Settings
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-list>
+    <ion-list-header>
+      Rules
+    </ion-list-header>
+
+    <ion-card>
+      <ion-card-content>
+      <p>Bills are paid from the below account</p>
+      <h2>*** *** 1201</h2>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+          <ion-item>
+            <ion-label>Show Account Balances</ion-label>
+            <ion-toggle value="showBal" [(ngModel)]="privacyData.showAccountBalance" checked="privacyData.showAccountBalance" (ngModelChange)="updatePrivacyPolicy()"></ion-toggle>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Enable Payment PIN</ion-label>
+            <ion-toggle value="enablePIN" [(ngModel)]="privacyData.askPaymentPIN" checked="privacyData.askPaymentPIN" (ngModelChange)="updatePrivacyPolicy()"></ion-toggle>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Allow Transfers</ion-label>
+            <ion-toggle value="allowTransfer" [(ngModel)]="privacyData.shouldAllowTransfers" checked="privacyData.shouldAllowTransfers" (ngModelChange)="updatePrivacyPolicy()"></ion-toggle>
+          </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+</ion-content>
